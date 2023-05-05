@@ -107,4 +107,4 @@ $files_to_send = Get-ChildItem -Path $sftp_paths.internal_destination_path -filt
 Send-FilesViaSFTP -WinSCPSessionOptions $WinSCP_SessionOptions -PathsObject $sftp_paths -FilesToSend $files_to_send
 
 # Delete sent files > 180 days
-Get-ChildItem -Path $sftp_paths.sent_archive_path -Filter *.txt | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-180) } | Remove-Item -Verbose
+Get-ChildItem -Path $sftp_paths.sent_archive_path -Filter *.* | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-180) } | Remove-Item -Verbose
