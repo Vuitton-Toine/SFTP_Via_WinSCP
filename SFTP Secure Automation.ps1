@@ -33,7 +33,7 @@ function Send-FilesViaSFTP {
             continue
         }
 
-        # Upload a file to the remote server
+        # Set local and remote paths
         $localPath = $FileToSend.FullName
         $remotePath = ($PathsObject.external_destination_path + $FileToSend.Name)
                 
@@ -41,6 +41,7 @@ function Send-FilesViaSFTP {
         $transferOptions = New-Object WinSCP.TransferOptions
         $transferOptions.ResumeSupport.State = [WinSCP.TransferResumeSupportState]::off   # required to not send partial files. 
  
+        # Upload the file to the remote server.
         $transferResult = $session.PutFiles($localPath, $remotePath, $False, $transferOptions) 
 
         # Check if the transfer was successful
