@@ -1,4 +1,4 @@
-﻿# This script requires WinSCP to be installed wherever the script is ran. It must have C:\Program Files (x86)\WinSCP\WinSCPnet.dll
+# This script requires WinSCP to be installed wherever the script is ran. It must have C:\Program Files (x86)\WinSCP\WinSCPnet.dll
 #      Script created by Anthony Mignona, 05/05/2023
 
 Import-Module "C:\Program Files (x86)\WinSCP\WinSCPnet.dll"
@@ -36,7 +36,12 @@ function Send-FilesViaSFTP {
         # Upload a file to the remote server
         $localPath = $FileToSend.FullName
         $remotePath = ($PathsObject.external_destination_path + $FileToSend.Name)
-        $transferResult = $session.PutFiles($localPath, $remotePath) 
+                
+        # Transfer Options (Only required if you have a requirement not to send partial files)
+        $transferOptions = New-Object WinSCP.TransferOptions
+        $transferOptions.ResumeSupport.State = [WinSCP.TransferResumeSupportState]::off   # required to not send partial files. 
+ 
+        $transferResult = $session.PutFiles($localPath, $remotePath, $False, $transferOptions) 
 
         # Check if the transfer was successful
         if ($transferResult.IsSuccess -eq $true) {
