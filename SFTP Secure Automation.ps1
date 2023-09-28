@@ -10,7 +10,7 @@ function Send-FilesViaSFTP {
         $FilesToSend
     )
 
-    # Secure Credentials. Works in conjunction with the steps outlined in commented lines 1-4. 
+    # Secure Credentials. Reference READ ME file for more details. 
     $login = Import-Clixml -path $PathsObject.credential_file
     $plogin = $login.password 
     $WinSCPSessionOptions.Password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($plogin))
@@ -88,8 +88,8 @@ function CheckIf-FileSent{
 $WinSCP_SessionOptions = New-Object WinSCP.SessionOptions -Property @{
     Protocol = [WinSCP.Protocol]::Sftp
     HostName = "" # SFTP Server FQDN should be here. For example: "test.company.com"
-    UserName = "" # This can stay blank. Be sure to update the $sftp_paths.credential_file attribute
-    Password = "" # This can stay blank. Be sure to update the $sftp_paths.credential_file attribute
+    UserName = "" # This can stay blank. Be sure to update the $sftp_paths.credential_file attribute. Reference README for more details. 
+    Password = "" # This can stay blank. Be sure to update the $sftp_paths.credential_file attribute. Reference README for more details. 
     PortNumber =  # What is the port number that you need to connect to? 
     SshHostKeyFingerprint = "" # This can be obtained from WinSCP GUI once you connect to the SFTP server in question. For example: "ssh-rsa 2048 xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx"
 }
