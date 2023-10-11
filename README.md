@@ -12,5 +12,5 @@ Requirements:
 	`$WinSCP_SessionOptions` 
 	`$sftp_paths` 
 
-3. This script requires that you encrypt your SFTP credentials to an credential file running the command below. Enter the path to the credential file in the script's variable $WinSCP_SessionOptions.username & $WinSCP_SessionOptions.password. This is more secure than storing the credentials in plain-text within the script. 
+3. This script requires that you encrypt your SFTP credentials to an credential file running the command below. Enter the path to the credential file in the script's variable $WinSCP_SessionOptions.UserName & $WinSCP_SessionOptions.Password. This is more secure than storing the credentials in plain-text within the script. 
 	`Get-Credential | Export-Clixml -path "C:\creds.txt" -Verbose` 
