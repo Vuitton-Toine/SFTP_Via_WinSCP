@@ -1,6 +1,6 @@
 **SFTP_Via_WinSCP**
 
-This script can be configured to monitor a folder and SFTP any files to a SFTP server. It will not same the same file twice. This script is preferably ran through Windows Task Scedhuler; however, can could also use a `while ($true)` loop to continuously have the script run. 
+This script can be configured to monitor a folder and SFTP any files to a SFTP server. It will not same the same file twice. This script is preferably ran through Windows Task Scheduler; however, can could also use a `while ($true)` loop to continuously have the script run. 
 
 This script requires WinSCP to be installed wherever the script is ran.  
 
